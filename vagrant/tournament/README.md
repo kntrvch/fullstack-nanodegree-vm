@@ -27,5 +27,5 @@ vagrant=>\i tournament.sql
 Then run the test script:
 
 ```sh
->> python tournament_test
+>> python tournament_test.py
 ```
