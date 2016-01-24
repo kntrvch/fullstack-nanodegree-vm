@@ -32,7 +32,7 @@ class Category(Base):
         }
 
 
-class item(Base):
+class Item(Base):
     __tablename__ = 'item'
 
     name = Column(String(80), nullable=False)
