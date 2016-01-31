@@ -1,0 +1,16 @@
+<div class="col-sm-3 col-md-2 sidebar">
+    <div class="list-group">
+        <h4 class="list-group-item-heading">Categories</h4>
+        <ul class="nav nav-sidebar">
+            {% for category in categories %}
+            <li{% if currentCategory is defined and category.id == currentCategory.id %}
+            class="active"{% endif %}>
+            <a href="{{ url_for('showItems', category_id = category.id) }}">
+                {{ category.name }}
+                <span class="badge" title="Number of items">{{ category.count }}</span>
+            </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
