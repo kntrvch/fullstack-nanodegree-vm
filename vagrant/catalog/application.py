@@ -25,11 +25,13 @@ Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
+# Add user info to templates
 @app.context_processor
 def inject_user():
     return dict(user=login_session)
 
 # User Helper Functions
+
 def createUser(login_session):
     newUser = User(name=login_session['username'], email=login_session[
                    'email'], picture=login_session['picture'])
@@ -48,6 +50,8 @@ def getUserID(email):
         return user.id
     except:
         return None
+
+# Google sign up / sign in
 
 @app.route('/gdisconnect')
 def gdisconnect():
