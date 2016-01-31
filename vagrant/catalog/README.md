@@ -8,29 +8,29 @@ category based on OAuth2 authentication.
 ## What's included
 
 ```
-??? catalog/
-?   ??? static/
-?   ?   ??? style.css
-?   ??? templates/
-?   ?   ??? addcategory.html
-?   ?   ??? additem.html
-?   ?   ??? categories.html
-?   ?   ??? deletecategory.html
-?   ?   ??? deleteitem.html
-?   ?   ??? editcategory.html
-?   ?   ??? edititem.html
-?   ?   ??? flash.html
-?   ?   ??? items.html
-?   ?   ??? login.html
-?   ?   ??? main.html
-?   ?   ??? publiccategories.html
-?   ?   ??? publicitems.html
-?   ?   ??? sidebar.html
-?   ??? application.py
-?   ??? client_secrets.json
-?   ??? database_setup.py
-?   ??? fixtures.py
-?   ??? README.md
+├── catalog/
+│   ├── static/
+│   ├── style.css
+│   ├── templates/
+│   │   ├── addcategory.html
+│   │   ├── additem.html
+│   │   ├── categories.html
+│   │   ├── deletecategory.html
+│   │   ├── deleteitem.html
+│   │   ├── editcategory.html
+│   │   ├── edititem.html
+│   │   ├── flash.html
+│   │   ├── items.html
+│   │   ├── login.html
+│   │   ├── main.html
+│   │   ├── publiccategories.html
+│   │   ├── publicitems.html
+│   │   ├── sidebar.html
+│   ├── application.py
+│   ├── client_secrets.json
+│   ├── database_setup.py
+│   ├── fixtures.py
+│   ├── README.md
 ```
 
 ## Installation
