@@ -1,24 +1,12 @@
 {% extends "main.html" %}
 {% block content %}
 <div class="row">
-    <div class="col-sm-3 col-md-2 sidebar">
-        <div class="list-group">
-            <h4 class="list-group-item-heading">Categories</h4>
-            <ul class="nav nav-sidebar">
-                {% for category in categories %}
-                <li{% if category.id == currentCategory.id %} class="active"{% endif %}>
-                    <a href="{{ url_for('showItems', category_id = category.id) }}">
-                        {{ category.name }}
-                        <span class="badge" title="Number of items">{{ category.count }}</span>
-                    </a>
-                </li>
-                {% endfor %}
-            </ul>
-        </div>
-    </div>
+    {% include "sidebar.html" %}
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <h1 class="page-header">Items</h1>
-        <h2 class="sub-header">{{ currentCategory.name }}</h2>
+        {% include "flash.html" %}
+        <h1 class="page-header">
+            {{ currentCategory.name }}
+        </h1>
         {% if items != [] %}
             <div class="table-responsive">
                 <table class="table table-striped">
@@ -49,8 +37,5 @@
     </div>
 </div>
 </div>
-
-
-
 
 {% endblock %}

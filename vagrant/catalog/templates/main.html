@@ -22,7 +22,12 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{ url_for('showCategories') }}"><i class="fa fa-home"></i></a></li>
-                    <li><a href="#">Log in</a></li>
+                    {% if user['email'] is defined and user['username'] is defined %}
+                        <li><a>{{ user['email'] }}</a></li>
+                        <li><a href="{{ url_for('gdisconnect') }}">Log out</a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('showLogin') }}">Log in</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
@@ -33,5 +38,6 @@
 		</div>
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="//apis.google.com/js/platform.js?onload=start"></script>
     </body>
 </html>
