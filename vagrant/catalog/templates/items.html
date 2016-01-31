@@ -1,0 +1,59 @@
+{% extends "main.html" %}
+{% block content %}
+<div class="row">
+    {% include "sidebar.html" %}
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        {% include "flash.html" %}
+        <h1 class="page-header">
+                {{ currentCategory.name }}
+                <a class="btn btn-danger pull-right" href="{{ url_for('deleteCategory',
+                category_id = currentCategory.id) }}" role="button">
+                    Delete category
+                </a>
+                <a class="btn btn-default pull-right" href="{{ url_for('editCategory',
+                category_id = currentCategory.id) }}" role="button">
+                    Edit category
+                </a>
+                <a class="btn btn-primary pull-right" href="{{ url_for('addItem',
+                category_id = currentCategory.id) }}" role="button">
+                    Add item
+                </a>
+            </h1>
+        {% if items != [] %}
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th class="center">Edit</th>
+                        <th class="center">Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in items %}
+                            <tr>
+                                <td>{{ item.id }}</td>
+                                <td>{{ item.name }}</td>
+                                <td>{{ item.description }}</td>
+                                <td>{{ item.price }}</td>
+                                <td class="center"><a href="{{ url_for('editItem',
+                                category_id = currentCategory.id, item_id = item.id) }}"><i class="fa fa-pencil"></i></a></td>
+                                <td class="center"><a href="{{ url_for('deleteItem',
+                                category_id = currentCategory.id, item_id = item.id) }}"><i class="fa fa-times"></i></a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+        <div class="row placeholders">
+        </div>
+        {% endif %}
+    </div>
+</div>
+</div>
+
+{% endblock %}
