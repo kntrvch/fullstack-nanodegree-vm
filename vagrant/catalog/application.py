@@ -230,7 +230,7 @@ def addCategory():
         session.commit()
         return redirect(url_for('showCategories'))
     else:
-        return render_template('addCategory.html', categories=categories)
+        return render_template('addcategory.html', categories=categories)
 
 # Edit category
 @app.route('/category/<int:category_id>/edit/', methods=['GET', 'POST'])
