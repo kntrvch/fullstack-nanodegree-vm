@@ -217,11 +217,11 @@ def showItems(category_id):
 # Create new category
 @app.route('/category/new/', methods=['GET', 'POST'])
 def addCategory():
+    if 'username' not in login_session:
+        return redirect('/login')
     categories = session.query(Category.id, Category.name,
                                func.count(Item.id).label('count')).\
         outerjoin(Item).group_by(Category.id).order_by(asc(Category.name))
-    if 'username' not in login_session:
-        return redirect('/login')
     if request.method == 'POST':
         newCategory = Category(
             name=request.form['name'], user_id=login_session['user_id'])
@@ -235,10 +235,10 @@ def addCategory():
 # Edit category
 @app.route('/category/<int:category_id>/edit/', methods=['GET', 'POST'])
 def editCategory(category_id):
-    editedCategory = session.query(
-        Category).filter_by(id=category_id).one()
     if 'username' not in login_session:
         return redirect('/login')
+    editedCategory = session.query(
+        Category).filter_by(id=category_id).one()
     if editedCategory.user_id != login_session['user_id']:
         return "<script>function myFunction() {alert('You are not authorized to edit this category. Please create your own category in order to edit.');}</script><body onload='myFunction()''>"
     if request.method == 'POST':
@@ -253,10 +253,10 @@ def editCategory(category_id):
 # Delete category
 @app.route('/category/<int:category_id>/delete/', methods=['GET', 'POST'])
 def deleteCategory(category_id):
-    categoryToDelete = session.query(
-        Category).filter_by(id=category_id).one()
     if 'username' not in login_session:
         return redirect('/login')
+    categoryToDelete = session.query(
+        Category).filter_by(id=category_id).one()
     if categoryToDelete.user_id != login_session['user_id']:
         return "<script>function myFunction() {alert('You are not authorized to delete this category. Please create your own category in order to delete.');}</script><body onload='myFunction()''>"
     if request.method == 'POST':
