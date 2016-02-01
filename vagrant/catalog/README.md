@@ -10,7 +10,7 @@ category based on OAuth2 authentication.
 ```
 ├── catalog/
 │   ├── static/
-│   ├── style.css
+│   │   ├── style.css
 │   ├── templates/
 │   │   ├── addcategory.html
 │   │   ├── additem.html
